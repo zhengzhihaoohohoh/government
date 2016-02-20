@@ -1,0 +1,138 @@
+@charset 'utf-8';
+
+*, :after, :before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0
+}
+li, ul {
+	list-style: none
+}
+.clearfix:after {
+	content: ' ';
+	font-size: 0;
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+body, html {
+	height: 100%
+}
+body {
+	font-family: 'Microsoft YaHei', Arial, sans-serif;
+	font-size: 10pt;
+	text-align: center;
+	color: #666;
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	overflow: hidden
+}
+.main {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	max-width: 640px;
+	margin: 0 auto
+}
+.main, .main * {
+	transition-timing-function: ease-out;
+	transition-duration: .5s;
+	transition-property: opacity, -webkit-transform;
+	transition-property: opacity, transform;
+	transition-property: opacity, transform, -webkit-transform
+}
+.main>* {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%
+}
+.icon-box {
+	padding-top: 5%;
+	height: 84%;
+	opacity: 1
+}
+.loading .icon-box, .show-popup .icon-box {
+	opacity: 0;
+	-webkit-transform: scale(5);
+	        transform: scale(5)
+}
+.show-popup .icon-box {
+	transition-duration: .3s;
+	transition-timing-function: ease-in
+}
+.icon-box>li {
+	position: relative;
+	display: block;
+	width: 25%;
+	height: 20%;
+	float: left;
+	background-size: auto 75%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	text-align: center;
+	margin-bottom: 2%
+}
+.icon-box>li:before {
+	position: absolute;
+	content: attr(title);
+	display: block;
+	width: 100%;
+	height: 25%;
+	bottom: 0
+}
+.popup-box, .popup-box-calc {
+	display: block;
+	z-index: 9;
+	padding: 10% 7.5%;
+	text-align: right;
+	pointer-events: none;
+	-webkit-transform: scale(0);
+	        transform: scale(0);
+	opacity: 0
+}
+.show-popup .popup-box {
+	pointer-events: auto;
+	-webkit-transform: scale(1);
+	        transform: scale(1);
+	opacity: 1
+}
+.popup-box-calc {
+	z-index: -9;
+	visibility: hidden;
+	-webkit-transform: scale(1);
+	        transform: scale(1)
+}
+.close-btn {
+	position: absolute;
+	z-index: 9;
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	border: solid 4px;
+	background: #fff;
+	-webkit-transform: translate(-70%, -30%);
+	        transform: translate(-70%, -30%)
+}
+.popup-box>li {
+	position: relative;
+	display: none;
+	text-align: left;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 0 10px 4px rgba(30, 30, 30, .4)
+}
+.popup-box>li.active {
+	display: block
+}
+.calc-fix {
+	-webkit-transform: scale(1);
+	        transform: scale(1)
+}

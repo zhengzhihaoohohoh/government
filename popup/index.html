@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="ONOX">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="main loading">
+        <ul class="icon-box clearfix">
+            <li popup="test1" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test2" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test3" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test4" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test5" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test6" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test7" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test8" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test9" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test10" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test11" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+            <li popup="test12" title="十二五" style="background-image:url(./images/icon1.png)"></li>
+        </ul>
+        <ul class="popup-box">
+            <div class="close-btn"></div>
+            <li popup="test1"></li>
+            <li popup="test2"></li>
+            <li popup="test3"></li>
+            <li popup="test4"></li>
+            <li popup="test5"></li>
+            <li popup="test6"></li>
+            <li popup="test7"></li>
+            <li popup="test8"></li>
+            <li popup="test9"></li>
+            <li popup="test10"></li>
+            <li popup="test11"></li>
+            <li popup="test12"></li>
+        </ul>
+        <div class="popup-box-calc"></div>
+    </div>
+    <script>
+        function getOffsetOrigin(e,p){
+
+            var e_offset = $(e).offset()
+            ,   e_width = $(e).innerWidth()
+            ,   e_height = $(e).innerHeight()
+
+            ,   p_offset = $(p).offset()
+            ,   p_width = $(p).innerWidth()
+            ,   p_height = $(p).innerHeight()
+
+            ,   lf = e_offset.left - p_offset.left + e_width/2
+            ,   tf = e_offset.top - p_offset.top + e_height/2
+
+            ,   xo = lf / p_width * 100
+            ,   yo = tf / p_height * 100
+
+            return xo + '% ' + yo + '%'
+        }
+        onload = function() {
+            var main = $('.main')
+            ,   iconBox = $('.icon-box')
+            ,   popupBox = $('.popup-box')
+            ,   popupBoxCalc = $('.popup-box-calc')
+            ,   closeBtn = $('.close-btn')
+
+            $(iconBox).on('click', 'li[popup]', function () {
+                var popup = $(this).attr('popup')
+                ,   io = getOffsetOrigin(this,iconBox)
+                ,   po = getOffsetOrigin(this,popupBoxCalc)
+
+                $(iconBox).css('transform-origin',io)
+                $(popupBox).css('transform-origin',po).children().removeClass('active').filter('[popup="'+popup+'"]').addClass('active')
+
+                $(main).addClass('show-popup')
+
+            });
+
+            $(closeBtn).on('click', function () {
+                $(main).removeClass('show-popup')
+            });
+
+            $(main).removeClass('loading')
+        }
+    </script>
+</body>
+
+</html>
