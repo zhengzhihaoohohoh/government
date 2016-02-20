@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>government</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '微软雅黑';
+        }
+        html,body{
+            height: 100%;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-image: url(./images/bg-menu.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+        .main{
+            margin-top: 5%;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 84%;
+        }
+        .row{
+            width: 100%;
+            height: 20%;
+            padding: 0.4%;
+            flex-direction:row;
+            -webkit-flex-direction:row;
+        }
+        .swiper-wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            /*display: none;*/
+        }
+        .swiper{
+            width: 100%;
+            height: 100%;
+            transform: scale(1.8,1.8);
+            -webkit-transform: scale(1.8,1.8);
+            -webkit-animation-name: main-trans;
+            -webkit-animation-duration: 0.3s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+        
+        @-webkit-keyframes main-trans{
+            25%{
+                transform:scale(1.6,1.6);
+                -webkit-transform:scale(1.6,1.6);
+            }
+            50%{
+                transform:scale(1.4,1.4);
+                -webkit-transform:scale(1.4,1.4);
+            }
+            75%{
+                transform:scale(1.2,1.2);
+                -webkit-transform:scale(1.2,1.2);
+            }
+            100%{
+                transform: scale(1,1);
+                -webkit-transform: scale(1,1);
+            }
+        }
+        
+        .row-flex{
+            display: flex;
+            display: -webkit-flex;
+        }
+        .nav-item{
+            height: 100%;
+            width: 25%;
+        }
+        .nav-icon{
+            height: 75%;
+            width: 100%;
+            margin-bottom: 2%;
+            text-align: center;
+            position: relative;
+            display: flex;
+            display: -webkit-flex;
+            background-image: url(./images/icon1.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .nav-icon1{
+            background-image: url(./images/icon1.png);
+        }
+        .nav-icon2{
+            background-image: url(./images/icon2.png);
+        }
+        .nav-icon3{
+            background-image: url(./images/icon3.png);
+        }
+        .nav-icon4{
+            background-image: url(./images/icon4.png);
+        }
+        .nav-icon5{
+            background-image: url(./images/icon5.png);
+        }
+        .nav-icon6{
+            background-image: url(./images/icon6.png);
+        }
+        .nav-icon7{
+            background-image: url(./images/icon7.png);
+        }
+        .nav-icon8{
+            background-image: url(./images/icon8.png);
+        }
+        .nav-icon9{
+            background-image: url(./images/icon9.png);
+        }
+        .nav-icon10{
+            background-image: url(./images/icon10.png);
+        }
+        .nav-icon11{
+            background-image: url(./images/icon11.png);
+        }
+        .nav-icon12{
+            background-image: url(./images/icon12.png);
+        }
+        .nav-name{
+            text-align: center;
+            color: #000000;
+            font-size: 12px;
+            height: 25%;
+        }
+        #modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+        }
+        .max-640-wrapper{
+            width: 100%;
+            height: 88%;
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        .contentModal{
+            width: 85%;
+            height: 100%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .modal-wrap{
+            width: 100%;
+            height: 100%;
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 0;
+            background-color: #FFFFFF;
+            border-radius: 25px;
+            box-shadow: 0 0 10px 8px rgba(30,30,30,0.5);
+            position: relative;
+        }
+        .modal-title{
+            height: 234.6px;
+            position: absolute;
+            top: -12.5%;
+            left: 0;
+            width: 100%;
+            background-image: url("./images/title1.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .btn-close{
+            width: 45px;
+            height: 45px;
+            background-color: #FFFFFF;
+            position: absolute;
+            top: 30%;
+            right: -5px;
+            border-radius: 50%;
+            border: 3px solid #BBBBBB;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+        .btn-close>i{
+            vertical-align: middle;
+            position: relative;
+            font-style: normal;
+            text-align: left;
+            content: '';
+            width: 20px;
+            height: 20px;
+            margin-left: 3px;
+        }
+        .btn-close>i:after, .btn-close>i:before{
+            background-color: #f44040;
+            width: 20px;
+            height: 4px;
+            content: '';
+            position: absolute;
+            top: 42px;
+            left: 6px;
+            border-radius: 4px;
+        }
+        .btn-close>i:before{
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        .btn-close>i:after{
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        .swiper-slide{
+            padding: 80px 10px 0;
+            height: auto;
+        }
+        .modal-content{
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .content{
+            width: 100%;
+        }
+        .content>img{
+            width: 100%;
+        }
+        .close{
+            -webkit-animation-name: close;
+            -webkit-animation-duration: 0.3s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+
+        .open{
+            -webkit-animation-name: open;
+            -webkit-animation-duration: 0.3s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+
+        @-webkit-keyframes open{
+            0%{
+                transform: scale3d(0,0,0);
+                -webkit-transform: scale3d(0,0,0);
+            }
+            100%{
+                transform: scale3d(1,1,1);
+                -webkit-transform: scale3d(1,1,1);
+            }
+        }
+
+        @-webkit-keyframes close{
+            0%{
+                transform: scale3d(1,1,1);
+                -webkit-transform: scale3d(1,1,1);
+            }
+            100%{
+                transform: scale3d(0,0,0);
+                -webkit-transform: scale3d(0,0,0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+	<div class="main">
+        <div class="swiper-wrap">
+            <div class="swiper swiper-scale">
+    	        <div class="row row-flex">
+        	        <div class="nav-item" data='1' orign='7% 5% 0px'>
+        	            <div class="nav-icon nav-icon1"></div>
+        	            <div class="nav-name">"十二五"</div>
+        	        </div>
+        	        <div class="nav-item" data='2' orign='37.5% 5% 0px'>
+        	            <div class="nav-icon nav-icon2"></div>
+        	            <div class="nav-name">经济发展</div>
+        	        </div>
+        	        <div class="nav-item" data='3' orign='62.5% 5% 0px'>
+        	            <div class="nav-icon nav-icon3"></div>
+        	            <div class="nav-name">城市建设</div>
+        	        </div>
+        	        <div class="nav-item" data='4' orign='90% 5% 0px'>
+        	            <div class="nav-icon nav-icon4"></div>
+        	            <div class="nav-name">创新转型</div>
+        	        </div>
+        	    </div>
+    	        <div class="row row-flex">
+        	        <div class="nav-item" data='5' orign='7% 25% 0px'>
+        	            <div class="nav-icon nav-icon5"></div>
+        	            <div class="nav-name">人居环境</div>
+        	        </div>
+        	        <div class="nav-item" data='6' orign='37.5% 25% 0px'>
+        	            <div class="nav-icon nav-icon6"></div>
+        	            <div class="nav-name">公共事业</div>
+        	        </div>
+        	        <div class="nav-item" data='7' orign='62.5% 25% 0px'>
+        	            <div class="nav-icon nav-icon7"></div>
+        	            <div class="nav-name">政府服务</div>
+        	        </div>
+        	        <div class="nav-item" data='8' orign='90% 25% 0px'>
+        	            <div class="nav-icon nav-icon8"></div>
+        	            <div class="nav-name">未来五年</div>
+        	        </div>
+        	    </div>
+    	        <div class="row row-flex">
+        	        <div class="nav-item" data='9' orign='7% 45% 0px'>
+        	            <div class="nav-icon nav-icon9"></div>
+        	            <div class="nav-name">重点工作</div>
+        	        </div>
+        	        <div class="nav-item" data='10' orign='37.5% 45% 0px'>
+        	            <div class="nav-icon nav-icon10"></div>
+        	            <div class="nav-name">民生实事</div>
+        	        </div>
+        	        <div class="nav-item" data='11' orign='62.5% 45% 0px'>
+        	            <div class="nav-icon nav-icon11"></div>
+        	            <div class="nav-name">全文阅读</div>
+        	        </div>
+        	        <div class="nav-item" orign='90% 45% 0px'>
+        	            <div class="nav-icon nav-icon12"></div>
+        	            <div class="nav-name">分享</div>
+        	        </div>
+        	    </div>
+    	   </div>
+        </div>
+        <div id="modal" style="transform: scale3d(0,0,0);-webkit-transform: scale3d(0,0,0);">
+            <div class="max-640-wrapper">
+                <div class="contentModal">
+                    <div class="modal-wrap">
+                        <div class="modal-title">
+                            <div class="btn-close">
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="modal-content">
+                            <div class="swiper-slide">
+                                <div class="content">
+                                    <img src="./images/content1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+<script type="text/javascript" src="http://zb.weixin.qq.com/nearbycgi/addcontact/BeaconAddContactJsBridge.js"></script>
+<script type="text/javascript">
+
+    // BeaconAddContactJsBridge.ready(function(){
+    //     //判断是否关注
+    //     BeaconAddContactJsBridge.invoke('checkAddContactStatus',{} ,function(apiResult){
+    //         if(apiResult.err_code == 0){
+    //             var status = apiResult.data;
+    //             if(status == 1){
+    //                 alert('已关注');
+    //             }else{
+    //                 alert('未关注');
+    //                 //跳转到关注页
+    //               BeaconAddContactJsBridge.invoke('jumpAddContact');
+    //             }
+    //         }else{
+    //             alert(apiResult.err_msg)
+    //         }
+    //     });
+    // });
+
+
+    //点击关闭页面
+    $('.btn-close').click(function() {
+        $('#modal').removeClass('open');
+        $('#modal').addClass('close');
+        $('.swiper-wrap').show();
+    });
+
+    //打开
+    $('.nav-item').click(function() {
+        var orign = $(this).attr('orign')
+        ,   data = $(this).attr('data')
+        ,   img = "./images/title"+data+".png";
+        $('#modal').find('.modal-title').css('background-image',"url("+img+")");
+        $('#modal').css({'transform-origin': orign});
+        $('#modal').removeClass('close');
+        $('#modal').addClass('open');
+        $('.swiper-wrap').hide();
+    });
+
+</script>
+</html>
